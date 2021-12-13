@@ -9,7 +9,7 @@ font_path = "C:/Windows/Fonts/NGULIM.TTF"
 font = font_manager.FontProperties(fname=font_path).get_name()
 rc('font', family=font)
 
-# # 급식계약금액의 최고,최소 5개 계약금액 찾기
+# # 급식계약금액의 최고,최소 5개 계약금액 찾기, 코드오류로 나머지 주석처리 후 실행
 # tp = School_meal_data["계약금액"]
 # tp1 = School_meal_data["계약명"]
 #
@@ -63,4 +63,10 @@ print("======================================================")
 
 #지역별 계약금액의 평균의 그래프
 School_meal_data.groupby('구매사시도명')['계약금액'].nunique().plot(kind='bar')
+plt.show()
+
+#계약금액과 변경계약차수의 관계
+ax = plt.gca()
+School_meal_data.plot(kind='line',x='구매사시도명',y='계약금액',ax=ax)
+School_meal_data.plot(kind='line',x='구매사시도명',y='변경계약차수', color='red', ax=ax)
 plt.show()
